@@ -96,16 +96,11 @@ VisionSample2014::VisionSample2014(void){
 				//Check if the particle is a horizontal target, if not, check if it's a vertical target
 				if(ScoreCompare(scores[i], false))
 				{
-//					printf("particle: %d  is a Horizontal Target centerX: %d  centerY: %d \n", i, report->center_mass_x, report->center_mass_y);
 					horizontalTargets[horizontalTargetCount++] = i; //Add particle to target array and increment count
 				} else if (ScoreCompare(scores[i], true)) {
-//					printf("particle: %d  is a Vertical Target centerX: %d  centerY: %d \n", i, report->center_mass_x, report->center_mass_y);
 					verticalTargets[verticalTargetCount++] = i;  //Add particle to target array and increment count
 				} else {
-//					printf("particle: %d  is not a Target centerX: %d  centerY: %d \n", i, report->center_mass_x, report->center_mass_y);
 				}
-//				printf("Scores rect: %f  ARvert: %f \n", scores[i].rectangularity, scores[i].aspectRatioVertical);
-//				printf("ARhoriz: %f  \n", scores[i].aspectRatioHorizontal);	
 			}
 
 			//Zero out scores and set verticalIndex to first target in case there are no horizontal targets
@@ -149,24 +144,7 @@ VisionSample2014::VisionSample2014(void){
 				}
 				//Determine if the best target is a Hot target
 				target.Hot = HotOrNot(target);
-			}
-			
-/*				if(verticalTargetCount > 0)
-			{
-				//Information about the target is contained in the "target" structure
-				//To get measurement information such as sizes or locations use the
-				//horizontal or vertical index to get the particle report as shown below
-				ParticleAnalysisReport *distanceReport = &(reports->at(target.verticalIndex));
-				double distance = ComputeDistance(filteredImage, distanceReport);
-				if(target.Hot)
-				{
-					printf("Hot target located \n");
-					printf("Distance: %f \n", distance);
-				} else {
-					printf("No hot target present \n");
-					printf("Distance: %f \n", distance);
-				}
-			}*/
+			}			
 		}
 		bool hotstatus = target.Hot;
 		// be sure to delete images after using them
